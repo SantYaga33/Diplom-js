@@ -14,14 +14,11 @@ const actionPopup = () => {
       let currentPopupElem = document.querySelector(targetAttr);
 
       currentPopupElem.style.display = 'block';
-     
-        currentPopupElem.addEventListener('click', (event) => {
-          console.log('  event.target: ',   event.target);
-          console.log('closest', event.target.closest('.form-content'));
-          if (event.target.matches('.close_icon') || (event.target.closest('.form-content') === null) ) {
-            currentPopupElem.style.display = 'none';
-          }
-        });
+      currentPopupElem.addEventListener('click', (event) => {
+        if (event.target.matches('.close_icon') || (event.target.closest('.form-content') === null) ) {
+          currentPopupElem.style.display = 'none';
+        }
+      });
     });  
       
   });
