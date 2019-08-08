@@ -12,8 +12,9 @@ elementClosest(window);
 
 // импорт модулей js 
 import changeClub from './modules/changeClub';
+import actionPopup  from './modules/actionPopup';
 
 
 // вызов функций модулей 
 changeClub();
-
+actionPopup();
