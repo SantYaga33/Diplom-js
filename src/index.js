@@ -9,8 +9,9 @@ import 'fetch-polyfill';
 import elementClosest from 'element-closest';
 elementClosest(window);
 
-// импорт модулей js 
 
+// импорт модулей js 
+import changeClub from './modules/changeClub';
 
 
 
@@ -24,6 +25,10 @@ elementClosest(window);
 // import changeImg from './modules/changeImg';
 // import calc from './modules/calc';
 // import sendForm from './modules/sendForm';
+
+
+// вызов функций модулей 
+changeClub();
 
 // // Таймер
 // countTimer('5 Aug 2019');

@@ -14,7 +14,7 @@
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
     "path": "^0.12.7",
-    "webpack": "^4.39.0",
+    "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
   },
@@ -23,7 +23,7 @@
     "element-closest": "^3.0.1",
     "es6-promise": "^4.2.8",
     "fetch-polyfill": "^0.8.2",
-    "formdata-polyfill": "^3.0.18",
+    "formdata-polyfill": "^3.0.19",
     "nodelist-foreach-polyfill": "^1.2.0"
   },
   "repository": {
