@@ -13,8 +13,10 @@ elementClosest(window);
 // импорт модулей js 
 import changeClub from './modules/changeClub';
 import actionPopup  from './modules/actionPopup';
+import sendForm  from './modules/sendForm';
 
 
 // вызов функций модулей 
 changeClub();
 actionPopup();
+sendForm();

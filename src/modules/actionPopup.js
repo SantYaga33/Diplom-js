@@ -16,7 +16,7 @@ const actionPopup = () => {
       currentPopupElem.style.display = 'block';
 
       bodyElem.addEventListener('click', (event) => {
-        if ( event.target.matches('.close_icon') || event.target.closest('.popup') ) {
+        if ( event.target.matches('.close_icon') || event.target.closest('.popup') === null ) {
           currentPopupElem.style.display = 'none';
         } else {
           return;
