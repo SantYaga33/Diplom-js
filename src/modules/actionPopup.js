@@ -1,6 +1,8 @@
 const actionPopup = () => {
-  const giftFormElem = document.querySelector('.fixed-gift');
-        giftFormElem.setAttribute('data-popup', '#fixed-gift');
+  const giftFormElem = document.querySelector('.fixed-gift'),
+        bodyElem     = document.querySelector('body');
+
+  giftFormElem.setAttribute('data-popup', '#fixed-gift');
 
   const visitedElem = document.querySelectorAll('*[data-popup^="#"]');
 
@@ -12,12 +14,15 @@ const actionPopup = () => {
       let currentPopupElem = document.querySelector(targetAttr);
 
       currentPopupElem.style.display = 'block';
-      let currentCloseElem = currentPopupElem.querySelector('.close_icon');
-      
-      currentCloseElem.addEventListener('click', () => {
-        currentPopupElem.style.display = 'none';
+
+      bodyElem.addEventListener('click', (event) => {
+        if ( event.target.matches('.close_icon') || event.target.closest('.popup') ) {
+          currentPopupElem.style.display = 'none';
+        } else {
+          return;
+        }
       });
-    
+
     });  
   });
   
