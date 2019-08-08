@@ -14,16 +14,16 @@ const actionPopup = () => {
       let currentPopupElem = document.querySelector(targetAttr);
 
       currentPopupElem.style.display = 'block';
-
-      bodyElem.addEventListener('click', (event) => {
-        if ( event.target.matches('.close_icon') || event.target.closest('.popup') === null ) {
-          currentPopupElem.style.display = 'none';
-        } else {
-          return;
-        }
-      });
-
+     
+        currentPopupElem.addEventListener('click', (event) => {
+          console.log('  event.target: ',   event.target);
+          console.log('closest', event.target.closest('.form-content'));
+          if (event.target.matches('.close_icon') || (event.target.closest('.form-content') === null) ) {
+            currentPopupElem.style.display = 'none';
+          }
+        });
     });  
+      
   });
   
 };
