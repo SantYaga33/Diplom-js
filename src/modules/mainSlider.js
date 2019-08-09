@@ -7,7 +7,7 @@ const mainSlider = () => {
 
 
 //исправляем верстку (поехала из за слайдера)
-headSlideElem.style.marginTop = '-80 + px';
+// headSlideElem.style.marginTop = '-80 + px';
 
 
 //'const slider = () => {
