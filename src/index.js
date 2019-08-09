@@ -15,6 +15,7 @@ import changeClub from './modules/changeClub';
 import actionPopup  from './modules/actionPopup';
 import getGift  from './modules/getGift';
 import sendForm  from './modules/sendForm';
+import mainSlider  from './modules/mainSlider';
 
 
 // вызов функций модулей 
@@ -22,3 +23,4 @@ changeClub();
 actionPopup();
 getGift();
 sendForm();
+mainSlider();
