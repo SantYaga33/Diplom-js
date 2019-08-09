@@ -1,9 +1,5 @@
 const actionPopup = () => {
-  // const giftFormElem = document.querySelector('.fixed-gift'),
-  //       bodyElem     = document.querySelector('body');
-
-  // giftFormElem.setAttribute('data-popup', '#fixed-gift');
-
+  
   const visitedElem = document.querySelectorAll('*[data-popup^="#"]');
 
   visitedElem.forEach((elem) => {
