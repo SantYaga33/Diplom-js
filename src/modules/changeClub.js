@@ -1,13 +1,18 @@
 const changeClub = () => {
-  const selectClubElem   = document.querySelector('.clubs-list'),
-        selectClubUlElem = document.querySelector('.clubs-list ul ');
+  const selectClubUlElem = document.querySelector('.clubs-list ul '),
+        bodylElem = document.querySelector('body');
 
-  selectClubElem.addEventListener('click', () => {
-    if (selectClubUlElem.style.display === 'none') {
+  selectClubUlElem.style.display = 'none';
+  bodylElem.addEventListener('click', (e) => {
+    e.preventDefault();    
+    if (e.target.matches('.clubs-list > p') && selectClubUlElem.style.display === 'none') {
       selectClubUlElem.style.display = 'block';
+    } else if (e.target.closest('.club-select') === null) {
+      selectClubUlElem.style.display = 'none';
     } else {
       selectClubUlElem.style.display = 'none';
     }
+
   });
 };
 

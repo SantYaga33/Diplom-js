@@ -5,8 +5,27 @@
 
    const callbackFormElem = document.getElementById('form1'),
      freeVisitFormElem = document.getElementById('form2'),
+     bannerFormElem = document.getElementById('banner-form'),
      footerFormElem = document.getElementById('footer_form'),
      cardOrderElem = document.getElementById('card_order');
+
+    // валидация полей ввода в формах 
+    const allInput = document.querySelectorAll('input');
+    allInput.forEach((elem) => {
+      if (elem.name === 'phone') {
+        elem.addEventListener('input', () => {
+          elem.value = elem.value.replace(/[^0-9+]/ig, '');
+        });
+      }
+    });
+
+    allInput.forEach((elem) => {
+      if (elem.name === 'name') {
+        elem.addEventListener('input', () => {
+          elem.value = elem.value.replace(/[^ А-Яа-яЁё]/ig, '');
+        });
+      }
+    });
 
    const statusMessage = document.createElement('div');
    statusMessage.style.cssText = 'font-size: 20px; color: red;';
@@ -61,6 +80,7 @@
 
    checkCurrentForm(callbackFormElem);
    checkCurrentForm(freeVisitFormElem);
+   checkCurrentForm(bannerFormElem);
    checkCurrentForm(footerFormElem);
    checkCurrentForm(cardOrderElem);
  
