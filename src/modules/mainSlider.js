@@ -4,7 +4,7 @@ const mainSlider = () => {
         sliderElem = document.querySelector('.main-slider');
 
   //исправляем верстку (поехала из за слайдера)
-  headSlideElem.style.marginTop = -80 + 'px';
+  // headSlideElem.style.marginTop = -80 + 'px';
 
   // создаем точки для слайдера ( они закомм-ны в верстке)
   const newDivElem = document.createElement('div');

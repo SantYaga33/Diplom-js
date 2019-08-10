@@ -13,3 +13,13 @@
 .slick-active {
   background-color: #ffd11a !important;
 }
+
+.popup-scale0 {
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.popup-scale01{
+  transform: scale(1);
+  transition: all 0.4s ease;
+} 

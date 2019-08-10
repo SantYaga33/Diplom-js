@@ -16,6 +16,7 @@ import actionPopup  from './modules/actionPopup';
 import getGift  from './modules/getGift';
 import sendForm  from './modules/sendForm';
 import mainSlider  from './modules/mainSlider';
+import servicesSlider  from './modules/servicesSlider';
 
 
 // вызов функций модулей 
@@ -24,4 +25,4 @@ actionPopup();
 getGift();
 sendForm();
 mainSlider();
-
+servicesSlider();
