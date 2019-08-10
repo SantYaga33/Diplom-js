@@ -6,7 +6,7 @@ const mainSlider = () => {
   //исправляем верстку (поехала из за слайдера)
   // headSlideElem.style.marginTop = -80 + 'px';
 
-  // создаем точки для слайдера ( они закомм-ны в верстке)
+  // создаем точки для слайдера 
   const newDivElem = document.createElement('div');
   newDivElem.classList.add('slider-dots');
   const newUlElem = document.createElement('ul');
@@ -60,6 +60,7 @@ const mainSlider = () => {
     event.preventDefault();
     let target = event.target;
   
+  console.log('target: ', target);
     if (!target.matches('.slider-dots li button')) {
       return;
     }
