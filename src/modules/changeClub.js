@@ -3,6 +3,7 @@ const changeClub = () => {
         bodylElem = document.querySelector('body');
 
   selectClubUlElem.style.display = 'none';
+  selectClubUlElem.style.zIndex = '1010';
   bodylElem.addEventListener('click', (e) => {
     e.preventDefault();    
     if (e.target.matches('.clubs-list > p') && selectClubUlElem.style.display === 'none') {

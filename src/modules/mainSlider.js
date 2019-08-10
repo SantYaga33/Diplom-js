@@ -1,67 +1,55 @@
 const mainSlider = () => {
   const slideElem = document.querySelectorAll('.main-slider .slide'),
-        headSlideElem = document.querySelectorAll('.head-slider'),
+        headSlideElem = document.querySelector('.head-slider'),
         sliderElem = document.querySelector('.main-slider');
 
+  //исправляем верстку (поехала из за слайдера)
+  headSlideElem.style.marginTop = -80 + 'px';
 
+  // создаем точки для слайдера ( они закомм-ны в верстке)
+  const newDivElem = document.createElement('div');
+  newDivElem.classList.add('slider-dots');
+  const newUlElem = document.createElement('ul');
 
+  for (let i = 0; i < slideElem.length; i++) {
+    const newLiElem = document.createElement('li'),
+    newButtonElem = document.createElement('button');
+    newButtonElem.style.zIndex = 1100;
 
-//исправляем верстку (поехала из за слайдера)
-// headSlideElem.style.marginTop = '-80 + px';
+    newLiElem.appendChild(newButtonElem);
+    newUlElem.appendChild(newLiElem);
+    newDivElem.appendChild(newUlElem);
+    }
+  sliderElem.appendChild(newDivElem);
 
-
-//'const slider = () => {
-//   const slideElem = document.querySelectorAll('.portfolio-item'),
-//     buttonElem = document.querySelectorAll('.portfolio-btn'),
-//     sliderElem = document.querySelector('.portfolio-content'),
-//     ulElem = document.querySelector('.portfolio-dots');
-
-//   // создаем точки для слайдера ( они закомм-ны в верстке)
-//   for (let i = 0; i < slideElem.length; i++) {
-  //     let newLiElem = document.createElement('li');
-  //     newLiElem.classList.add('dot');
-  //     ulElem.appendChild(newLiElem);
-  //   }
-  //   const dotElem = document.querySelectorAll('.dot');
-  //   dotElem[0].classList.add('dot-active');
+  const dotElem = document.querySelectorAll('.slider-dots li button');
+  dotElem[0].classList.add('slick-active');
   
+  //слайдер
   let currentSlide = 0, interval;
-
   slideElem.forEach((item) => {
-    item.style.transitionProperty = 'all';
-    item.style.transitionDuration = 0.3 + 's';
-    item.style.transitionTimingFunction = 'ease';
-    item.style.opacity = 0;
+    item.classList.add('main-slider__opacity');
   });
    
-    slideElem[0].style.opacity = 1;
-    slideElem[0].style.display = 'block';
-  
-  const prevSlide = (elem, index) => {
-    elem[index].style.display = 'none';
-    elem[index].style.transitionProperty = 'all';
-    elem[index].style.transitionDuration = 0.5 + 's';
-    elem[index].style.transitionTimingFunction = 'ease';
-    elem[index].style.opacity = 0;
+  slideElem[0].classList.add('main-slider__active');
+ 
+  const prevSlide = (elem, index, myClass) => {
+    elem[index].classList.remove(myClass);
   };
 
-  const nextSlide = (elem, index) => {
-    elem[index].style.display = 'block';
-    elem[index].style.transitionProperty = 'all';
-    elem[index].style.transitionDuration = 0.5 + 's';
-    elem[index].style.transitionTimingFunction = 'ease';
-    elem[index].style.opacity = 1;
+  const nextSlide = (elem, index, myClass) => {
+    elem[index].classList.add(myClass);
   };
 
   const autoPlaySlide = () => {
-    prevSlide(slideElem, currentSlide);
-    // prevSlide(dotElem, currentSlide, 'dot-active');
+    prevSlide(slideElem, currentSlide, 'main-slider__active');
+    prevSlide(dotElem, currentSlide, 'slick-active');
     currentSlide++;
     if (currentSlide >= slideElem.length) {
       currentSlide = 0;
     }
-    nextSlide(slideElem, currentSlide);
-    // nextSlide(dotElem, currentSlide, 'dot-active');
+    nextSlide(slideElem, currentSlide, 'main-slider__active');
+    nextSlide(dotElem, currentSlide, 'slick-active');
   };
 
   const startSlide = (time = 3000) => {
@@ -75,40 +63,41 @@ const mainSlider = () => {
   sliderElem.addEventListener('click', (event) => {
     event.preventDefault();
     let target = event.target;
-    if (!target.matches('.portfolio-btn, .dot')) {
+  
+    if (!target.matches('.slider-dots li button')) {
       return;
     }
-    prevSlide(slideElem, currentSlide);
-    // prevSlide(dotElem, currentSlide, 'dot-active');
+    prevSlide(slideElem, currentSlide, 'main-slider__active');
+    prevSlide(dotElem, currentSlide, 'slick-active');
 
-   
-    // if (target.matches('.dot')) {
-    //   dotElem.forEach((elem, index) => {
-    //     if (elem === target) {
-    //       currentSlide = index;
-    //     }
-    //   });
-    // }
+    if (target.matches('.slider-dots li button')) {
+      dotElem.forEach((elem, index) => {
+        if (elem === target) {
+          currentSlide = index;
+        }
+      });
+    }
     if (currentSlide >= slideElem.length) {
       currentSlide = 0;
     }
     if (currentSlide < 0) {
       currentSlide = slideElem.length - 1;
     }
-    nextSlide(slideElem, currentSlide);
-    // nextSlide(dotElem, currentSlide, 'dot-active');
+    nextSlide(slideElem, currentSlide, 'main-slider__active');
+    nextSlide(dotElem, currentSlide, 'slick-active');
   });
 
+  //останавливаем слайдер при наведении ( на слай или точки)
   sliderElem.addEventListener('mouseover', (event) => {
-    if (event.target.matches('.main-slider .slide') ||
-      event.target.matches('.dot')) {
+    if (event.target.closest('.main-slider .slide') ||
+      event.target.matches('.slider-dots li button')) {
       stopSlide();
     }
   });
 
   sliderElem.addEventListener('mouseout', (event) => {
-    if (event.target.matches('.main-slider .slide') ||
-      event.target.matches('.dot')) {
+    if (event.target.closest('.main-slider .slide') ||
+      event.target.matches('.slider-dots li button')) {
       startSlide();
     }
   });

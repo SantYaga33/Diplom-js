@@ -1,0 +1,15 @@
+.main-slider__opacity {
+  opacity: 0 !important;
+  transition: opacity 0.8s ease;
+  position: absolute !important;
+}
+
+.main-slider__active {
+  opacity: 1 !important;
+  transition: opacity 0.8s ease;
+
+}
+
+.slick-active {
+  background-color: #ffd11a !important;
+}
