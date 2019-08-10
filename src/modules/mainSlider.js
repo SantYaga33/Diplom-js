@@ -27,10 +27,6 @@ const mainSlider = () => {
   
   //слайдер
   let currentSlide = 0, interval;
-  slideElem.forEach((item) => {
-    item.classList.add('main-slider__opacity');
-  });
-   
   slideElem[0].classList.add('main-slider__active');
  
   const prevSlide = (elem, index, myClass) => {
