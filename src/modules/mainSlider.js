@@ -1,9 +1,9 @@
 const mainSlider = () => {
   const slideElem = document.querySelectorAll('.main-slider .slide'),
-        headSlideElem = document.querySelector('.head-slider'),
-        sliderElem = document.querySelector('.main-slider');
-
+    sliderElem = document.querySelector('.main-slider');
+  
   //исправляем верстку (поехала из за слайдера)
+  // const headSlideElem = document.querySelector('.head-slider');
   // headSlideElem.style.marginTop = -80 + 'px';
 
   // создаем точки для слайдера 

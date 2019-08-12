@@ -3,9 +3,9 @@ const actionPopup = () => {
   const visitedElem = document.querySelectorAll('*[data-popup^="#"]'),
         allPopup = document.querySelectorAll('.popup');
 
-  allPopup.forEach((elem) => {
-    elem.classList.add('popup-scale0');
-  });
+  // allPopup.forEach((elem) => {
+  //   elem.classList.add('popup-scale0');
+  // });
 
   visitedElem.forEach((elem) => {
     elem.addEventListener('click', (e) => {

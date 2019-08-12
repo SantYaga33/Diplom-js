@@ -35,13 +35,47 @@
 /* стили для галереи  */
 .gallery-slider .slide {
   opacity: 0; 
-  /* position: absolute; */
   display: none; 
-  transition: all 0.5s ease;
+  transition: all .8s ease;
 }
 
 .gallery-slider__active {
   display: block !important;
-  opacity: 1 !important;
-  transition: all 0.5s ease;
+  transition: all .8s ease
 }
+
+.gallery-slider__opacity {
+  opacity: 1 !important;
+  transition: all .8s ease;
+}
+
+/* стили для слайдера серсисы */
+.services-slider__wrap {
+  display: flex;
+  margin: 0 auto;
+  position: relative;
+  left: 0;
+  transition: all .8s ease;
+}
+.services-slider {
+  position: relative;
+  overflow: hidden;
+}
+.services-slider .slide {
+  text-align: center;
+  margin-right: 7px;
+  margin-left: 7px;
+  width: 210px;
+}
+.services-slider .slider-arrow{
+  position: absolute;
+}
+.services-slider .slider-arrow.next {
+  right: 0 !important;
+}
+
+.services-slider .slide {
+  transition: opacity 0.8s ease;
+  min-width: 210px;
+}
+
