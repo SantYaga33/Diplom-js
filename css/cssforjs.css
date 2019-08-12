@@ -50,18 +50,12 @@
 }
 
 /* стили для слайдера серсисы */
-.services-slider__wrap {
-  display: flex;
-  margin: 0 auto;
-  position: relative;
-  left: 0;
-  transition: all .8s ease;
-}
 .services-slider {
   position: relative;
   overflow: hidden;
 }
 .services-slider .slide {
+  display: none;
   text-align: center;
   margin-right: 7px;
   margin-left: 7px;
@@ -75,7 +69,10 @@
 }
 
 .services-slider .slide {
-  transition: opacity 0.8s ease;
   min-width: 210px;
+}
+.services-slider__active {
+  display: block !important;
+  
 }
 

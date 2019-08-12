@@ -7,23 +7,25 @@ const gallerySlider = () => {
   //создаем  стрелки для слайдера 
   const leftArrowElem = document.createElement('div'),
         leftArrowSpanElem = document.createElement('span'),
-        leftArrowIElem = document.createElement('i');
+        leftArrowImgElem = document.createElement('img');
 
   leftArrowElem.classList.add('slider-arrow', 'prev');
-  leftArrowIElem.classList.add('fas', 'fa-angle-left');
+  leftArrowSpanElem.classList.add('span-prev');
+  leftArrowImgElem.src = 'images/arrow-left.png';
 
-  leftArrowSpanElem.appendChild(leftArrowIElem);
+  leftArrowSpanElem.appendChild(leftArrowImgElem);
   leftArrowElem.appendChild(leftArrowSpanElem);
   sliderElem.appendChild(leftArrowElem);
 
   const rightArrowElem = document.createElement('div'),
         rightArrowSpanElem = document.createElement('span'),
-        rightArrowIElem = document.createElement('i');
+        rightArrowImgElem = document.createElement('img');
 
   rightArrowElem.classList.add('slider-arrow', 'next');
-  rightArrowIElem.classList.add('fas', 'fa-angle-right');
+  rightArrowSpanElem.classList.add('span-next');
+  rightArrowImgElem.src = 'images/arrow-right.png';
 
-  rightArrowSpanElem.appendChild(rightArrowIElem);
+  rightArrowSpanElem.appendChild(rightArrowImgElem);
   rightArrowElem.appendChild(rightArrowSpanElem);
   sliderElem.appendChild(rightArrowElem);
 
@@ -87,14 +89,14 @@ const gallerySlider = () => {
     let target = event.target;
    
    console.log(' target: ',  target);
-    if (!target.matches('.gallery-slider i .fas .fa-angle-right, .gallery-slider i .fas .fa-angle-left, .gallery-slider .slider-dots li button ')) {
+    if (!target.matches('.span-prev img, .span-prev, .span-next, .span-next img, .gallery-slider .slider-dots li button ')) {
       return;
     }
     prevSlide(slideElem, currentSlide, 'gallery-slider__active');
     prevSlide(dotElem, currentSlide, 'slick-active');
-    if (target.matches('.gallery-slider i .fas .fa-angle-right')) {
+    if (target.matches('.span-next, .span-next img')) {
       currentSlide++;
-    } else if (target.matches('.gallery-slider i .fas .fa-angle-left')) {
+    } else if (target.matches('.span-prev, .span-prev img')) {
       currentSlide--;
     } else if (target.matches('.gallery-slider .slider-dots li button')) {
       dotElem.forEach((elem, index) => {
@@ -117,14 +119,14 @@ const gallerySlider = () => {
   //останавливаем слайдер при наведении ( на слайд или точки)
   sliderElem.addEventListener('mouseover', (event) => {
     if (event.target.closest('.gallery-slider .slide') ||
-      event.target.matches('.slider-dots li button')) {
+      event.target.matches('.slider-dots li button, .span-prev img, .span-prev, .span-next, .span-next img')) {
       stopSlide();
     }
   });
 
   sliderElem.addEventListener('mouseout', (event) => {
     if (event.target.closest('.gallery-slider .slide') ||
-      event.target.matches('.slider-dots li button')) {
+      event.target.matches('.slider-dots li button, .span-prev img, .span-prev, .span-next, .span-next img')) {
       startSlide();
     }
   });
