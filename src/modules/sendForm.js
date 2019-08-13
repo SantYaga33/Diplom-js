@@ -8,7 +8,7 @@ const sendForm = () => {
     bannerFormElem = document.getElementById('banner-form'),
     footerFormElem = document.getElementById('footer_form'),
     cardOrderElem = document.getElementById('card_order');
-
+   
   // валидация полей ввода в формах 
   const allInput = document.querySelectorAll('input');
   allInput.forEach((elem) => {
@@ -31,8 +31,8 @@ const sendForm = () => {
   statusMessage.style.cssText = 'font-size: 20px; color: red;';
   // функция сбора данных с полей ввода  
   const checkCurrentForm = (currentForm) => {
-    const buttonFormElem = currentForm.querySelector('.btn');
-    buttonFormElem.addEventListener('click', (e) => {
+    // const buttonFormElem = currentForm.querySelector('.btn');
+    currentForm.addEventListener('submit', (e) => {
       console.log('сработало событие сабмит');
       e.preventDefault();
       currentForm.appendChild(statusMessage);

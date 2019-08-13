@@ -5,7 +5,7 @@ const changeClub = () => {
   selectClubUlElem.style.display = 'none';
   selectClubUlElem.style.zIndex = '1010';
   bodylElem.addEventListener('click', (e) => {
-    e.preventDefault();    
+    // e.preventDefault();    
     if (e.target.matches('.clubs-list > p') && selectClubUlElem.style.display === 'none') {
       selectClubUlElem.style.display = 'block';
     } else if (e.target.closest('.club-select') === null) {

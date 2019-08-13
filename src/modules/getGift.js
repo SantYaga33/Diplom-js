@@ -2,6 +2,7 @@ const getGift = () => {
   const fixedGiftElem = document.querySelector('.fixed-gift > img'),
         giftElem = document.getElementById('gift');
 
+  if (document.body.contains(giftElem)) {
   fixedGiftElem.addEventListener('click', () => {
     fixedGiftElem.style.display = 'none';
     giftElem.style.display = 'block';
@@ -13,6 +14,9 @@ const getGift = () => {
       giftElem.style.display = 'none';
      }
    });
+  } else {
+    return;
+  }
 };
 
  export default getGift;
