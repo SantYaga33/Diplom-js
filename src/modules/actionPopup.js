@@ -18,7 +18,7 @@ const actionPopup = () => {
       // currentPopupElem.classList.add('popup-scale1');
       currentPopupElem.addEventListener('click', (event) => {
         if (event.target.matches('.close_icon') || (event.target.closest('.form-content') === null) ) {
-          currentPopupElem.classList.remove('popup-scale1');
+          // currentPopupElem.classList.remove('popup-scale1');
           currentPopupElem.style.display = 'none';
         }
       });

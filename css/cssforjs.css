@@ -60,7 +60,7 @@
 }
 
 .services-slider .slide {
-  display: none;
+  /* display: none; */
   text-align: center;
   margin-right: 7px;
   margin-left: 7px;

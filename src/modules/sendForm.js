@@ -1,14 +1,17 @@
 const sendForm = () => {
-  const errorMessage = 'Что то пошло не так ...',
-    loadMessage = 'Загрузка ...',
-    sucsessMessage = 'Спасибо! Мы скоро с Вами свяжемся.';
+  // const errorMessage = 'Что то пошло не так ...',
+  //   loadMessage = 'Загрузка ...',
+  //   sucsessMessage = 'Спасибо! Мы скоро с Вами свяжемся.';
 
   const callbackFormElem = document.getElementById('form1'),
     freeVisitFormElem = document.getElementById('form2'),
     bannerFormElem = document.getElementById('banner-form'),
     footerFormElem = document.getElementById('footer_form'),
-    cardOrderElem = document.getElementById('card_order');
-   
+    cardOrderElem = document.getElementById('card_order'),
+    thanksFormElem = document.getElementById('thanks'),
+    thanksContentH4Elem = document.querySelector('#thanks  .form-content h4'),
+    thanksContentTextElem = document.querySelector('#thanks  .form-content p');
+
   // валидация полей ввода в формах 
   const allInput = document.querySelectorAll('input');
   allInput.forEach((elem) => {
@@ -26,27 +29,46 @@ const sendForm = () => {
       });
     }
   });
-  // внешний вид ошибки -выводим на страничку
-  const statusMessage = document.createElement('div');
-  statusMessage.style.cssText = 'font-size: 20px; color: red;';
+ 
+  //блок управление закрытия popup для благодарности и ошибок
+  const thanksElem = document.getElementById('thanks');
+  thanksElem.addEventListener('click', (event) => {
+    if (event.target.matches('.close_icon') ||
+      (event.target.closest('.form-content') === null) ||
+      event.target.matches('.form-content > button')) {
+      thanksElem.style.display = 'none';
+    }
+  });
+ 
   // функция сбора данных с полей ввода  
   const checkCurrentForm = (currentForm) => {
-    // const buttonFormElem = currentForm.querySelector('.btn');
     currentForm.addEventListener('submit', (e) => {
-      console.log('сработало событие сабмит');
+      const currentFormCheckbox = currentForm.querySelector('input[type=checkbox]'),
+            currentPopupElem = currentForm.closest('.popup');
       e.preventDefault();
-      currentForm.appendChild(statusMessage);
-      statusMessage.textContent = loadMessage;
-
       let formData = new FormData(currentForm);
       let body = {};
       formData.forEach((val, key) => {
         body[key] = val;
       });
-
+      
+      if (!currentFormCheckbox.checked) {
+        thanksContentH4Elem.textContent = 'Ошибка';
+        thanksContentTextElem.textContent = `Необходимо Ваше согласие на обработку персональных данных`;
+        thanksFormElem.style.display = 'block';
+        setTimeout(() => {
+          thanksFormElem.style.display = 'none';
+          thanksContentH4Elem.textContent = 'Спасибо!';
+          thanksContentTextElem.textContent = `Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.`;
+        }, 3000);
+         currentPopupElem.style.display = 'block';
+      }
       const allInput = currentForm.querySelectorAll('input');
       allInput.forEach((elem) => {
         elem.value = '';
+        if (elem.type == "checkbox") {
+          elem.checked = false;
+        }
       });
       
       // обработка полученных данных - после отправки формы
@@ -55,17 +77,22 @@ const sendForm = () => {
           if (response.status !== 200) {
             throw new Error('Status network not 200');
           }
-          statusMessage.textContent = sucsessMessage;
+          currentPopupElem.style.display = 'none';
+          thanksFormElem.style.display = 'block';
           setTimeout(() => {
-            statusMessage.textContent = '';
-          }, 5000);
+            thanksFormElem.style.display = 'none';
+          }, 3000);
         })
         .catch((error) => {
-          statusMessage.textContent = errorMessage;
           console.log(error);
+          thanksContentH4Elem.textContent = 'Ошибка';
+          thanksContentTextElem.textContent = `Приносим извенения. Попробуйте позже`;
+          thanksFormElem.style.display = 'block';
           setTimeout(() => {
-            statusMessage.textContent = '';
-          }, 5000);
+            thanksFormElem.style.display = 'none';
+            thanksContentH4Elem.textContent = 'Спасибо!';
+            thanksContentTextElem.textContent = `Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.`;
+          }, 3000);
         });
 
     });
