@@ -26,5 +26,5 @@ actionPopup();
 getGift();
 sendForm();
 mainSlider();
-servicesSlider();
+// servicesSlider('.services-slider');
 gallerySlider();

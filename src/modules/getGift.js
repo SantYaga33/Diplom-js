@@ -7,7 +7,9 @@ const getGift = () => {
     giftElem.style.display = 'block';
   });
    giftElem.addEventListener('click', (event) => {
-     if (event.target.matches('.close_icon') || (event.target.closest('.form-content') === null) || event.target.matches('.form-content > button')) {
+     if (event.target.matches('.close_icon') || 
+     (event.target.closest('.form-content') === null) || 
+     event.target.matches('.form-content > button')) {
       giftElem.style.display = 'none';
      }
    });

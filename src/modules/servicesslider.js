@@ -1,96 +1,139 @@
 const servicesSlider = () => { 
-  const sliderElem = document.querySelector('.services-slider'),
-        slideElem = document.querySelectorAll('.services-slider .slide');
-
-
+  // return function (selector) {
+    const
+      _mainElement = document.querySelector('.services-slider'), // основный элемент блока
+      _sliderWrapper = _mainElement.querySelector('.services-slider__wrapper'), // обертка для .slider-item
+      _sliderItems = _mainElement.querySelectorAll('.slide'), // элементы (.slider-item)
+      _sliderControls = _mainElement.querySelectorAll('.services-slider .slider-arrow'), // элементы управления
+      // _sliderControlLeft = _mainElement.querySelector('.slider__control_left'), // кнопка "LEFT"
+      // _sliderControlRight = _mainElement.querySelector('.slider__control_right'), // кнопка "RIGHT"
+      _wrapperWidth = parseFloat(getComputedStyle(_sliderWrapper).width), // ширина обёртки
+      _itemWidth = parseFloat(getComputedStyle(_sliderItems[0]).width); // ширина одного элемента   
+      
   //создаем  стрелки для слайдера 
   const leftArrowElem = document.createElement('div'),
     leftArrowSpanElem = document.createElement('span'),
-    leftArrowImgElem = document.createElement('img');
+    _sliderControlLeft = document.createElement('img');
 
   leftArrowElem.classList.add('slider-arrow', 'prev');
   leftArrowSpanElem.classList.add('span-prev');
-  leftArrowImgElem.src = 'images/arrow-left.png';
+  _sliderControlLeft.src = 'images/arrow-left.png';
 
-  leftArrowSpanElem.appendChild(leftArrowImgElem);
+  leftArrowSpanElem.appendChild(_sliderControlLeft);
   leftArrowElem.appendChild(leftArrowSpanElem);
-  sliderElem.appendChild(leftArrowElem);
+  _mainElement.appendChild(leftArrowElem);
 
   const rightArrowElem = document.createElement('div'),
     rightArrowSpanElem = document.createElement('span'),
-    rightArrowImgElem = document.createElement('img');
+    _sliderControlRight = document.createElement('img');
 
   rightArrowElem.classList.add('slider-arrow', 'next');
   rightArrowSpanElem.classList.add('span-next');
-  rightArrowImgElem.src = 'images/arrow-right.png';
+  _sliderControlRight.src = 'images/arrow-right.png';
 
-  rightArrowSpanElem.appendChild(rightArrowImgElem);
+  rightArrowSpanElem.appendChild(_sliderControlRight);
   rightArrowElem.appendChild(rightArrowSpanElem);
-  sliderElem.appendChild(rightArrowElem);
+  _mainElement.appendChild(rightArrowElem);
 
 //слайдер
-  //  showSlide - количество отображаемых слайдов
- let showSlide = 5,
-   currentSlide = showSlide - 1,
-   interval;
 
- const prevSlide = (elem, index, myClass) => {
-   let currentIndex = index - 4;
-   if (currentIndex < 0) {
-     currentIndex = slideElem.length - Math.abs(index - 4);
+      let
+      _positionLeftItem = 0, // позиция левого активного элемента
+      _transform = 0, // значение транфсофрмации .slider_wrapper
+      _step = _itemWidth / _wrapperWidth * 100, // величина шага (для трансформации)
+      _items = []; // массив элементов
+
+    // наполнение массива _items
+    _sliderItems.forEach(function (item, index) {
+      _items.push({
+        item: item,
+        position: index,
+        transform: 0
+      });
+    });
+
+    const position = {
+      getItemMin: function () {
+        let indexItem = 0;
+        _items.forEach(function (item, index) {
+          if (item.position < _items[indexItem].position) {
+            indexItem = index;
+          }
+        });
+        return indexItem;
+      },
+      getItemMax: function () {
+        let indexItem = 0;
+        _items.forEach(function (item, index) {
+          if (item.position > _items[indexItem].position) {
+            indexItem = index;
+          }
+        });
+        return indexItem;
+      },
+      getMin: function () {
+        return _items[position.getItemMin()].position;
+      },
+      getMax: function () {
+        return _items[position.getItemMax()].position;
+      }
     }
-  
-    console.log(' currentIndex: ',  currentIndex);
-   elem[currentIndex].classList.remove(myClass);
- };
 
-const nextSlide = (elem, index, myClass) => {
-  elem[index].classList.add(myClass);
-  // let showSlids = index+5;
-  // for (let i = index; i < showSlids; i++) {
-  //   elem[i].classList.add(myClass);
-  // console.log(' elem[index]: ',  elem[index]);
-  // }
+    const _transformItem = function (direction) {
+      let nextItem;
+      if (direction === 'right') {
+        _positionLeftItem++;
+        if ((_positionLeftItem + _wrapperWidth / _itemWidth - 1) > position.getMax()) {
+          nextItem = position.getItemMin();
+          _items[nextItem].position = position.getMax() + 1;
+          _items[nextItem].transform += _items.length * 100;
+          _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
+        }
+        _transform -= _step;
+      }
+      if (direction === 'left') {
+        _positionLeftItem--;
+        if (_positionLeftItem < position.getMin()) {
+          nextItem = position.getItemMax();
+          _items[nextItem].position = position.getMin() - 1;
+          _items[nextItem].transform -= _items.length * 100;
+          _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
+        }
+        _transform += _step;
+      }
+      _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
+    }
+
+    // обработчик события click для кнопок "назад" и "вперед"
+    const _controlClick = function (e) {
+      const direction = this.classList.contains('span-next') ? 'right' : 'left';
+      e.preventDefault();
+      _transformItem(direction);
+    };
+
+    const _setUpListeners = function () {
+      // добавление к кнопкам "назад" и "вперед" обрботчика _controlClick для событя click
+      _sliderControls.forEach(function (item) {
+        item.addEventListener('click', _controlClick);
+      });
+    }
+
+    // инициализация
+    _setUpListeners();
+
+    return {
+      right: function () { // метод right
+        _transformItem('right');
+      },
+      left: function () { // метод left
+        _transformItem('left');
+      }
+    }
+
+ 
 };
 
-const autoPlaySlide = () => {
-  prevSlide(slideElem, currentSlide, 'services-slider__active');
-  currentSlide++;
-  if (currentSlide >= slideElem.length) {
-    currentSlide = 0;
-  }
-  nextSlide(slideElem, currentSlide, 'services-slider__active');
-};
 
- const startSlide = (time = 3000) => {
-   interval = setInterval(autoPlaySlide, time);
- };
-
- const stopSlide = () => {
-   clearInterval(interval);
- };
-
-sliderElem.addEventListener('click', (event) => {
-  event.preventDefault();
-  let target = event.target;
-  console.log(' target: ', target);
-  if (!target.matches('.span-next, .span-prev, .span-next img, .span-prev img')) {
-    return;
-  }
-  prevSlide(slideElem, currentSlide, 'services-slider__active');
-  if (target.matches('.span-next, .span-next img')) {
-    currentSlide++;
-  } else if (target.matches('.span-prev, .span-prev img')) {
-    currentSlide--;
-  }
-  if (currentSlide >= slideElem.length) {
-    currentSlide = 0;
-  }
-  if (currentSlide < 0) {
-    currentSlide = slideElem.length - 1;
-  }
-  nextSlide(slideElem, currentSlide, 'services-slider__active');
-});
 
  //останавливаем слайдер при наведении ( на слайд или точки)
 //  sliderElem.addEventListener('mouseover', (event) => {
@@ -107,9 +150,9 @@ sliderElem.addEventListener('click', (event) => {
 //    }
 //  });
 
- startSlide(3000);
+ 
 
-};
+
 
  export default servicesSlider;
 
