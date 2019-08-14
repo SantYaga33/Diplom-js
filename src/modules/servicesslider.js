@@ -5,10 +5,8 @@ const servicesSlider = () => {
       _sliderWrapper = _mainElement.querySelector('.services-slider__wrapper'), // обертка для .slider-item
       _sliderItems = _mainElement.querySelectorAll('.slide'), // элементы (.slider-item)
       _sliderControls = _mainElement.querySelectorAll('.services-slider .slider-arrow'), // элементы управления
-      // _sliderControlLeft = _mainElement.querySelector('.slider__control_left'), // кнопка "LEFT"
-      // _sliderControlRight = _mainElement.querySelector('.slider__control_right'), // кнопка "RIGHT"
-      _wrapperWidth = parseFloat(getComputedStyle(_sliderWrapper).width), // ширина обёртки
-      _itemWidth = parseFloat(getComputedStyle(_sliderItems[0]).width); // ширина одного элемента   
+     
+     
       
   //создаем  стрелки для слайдера 
   const leftArrowElem = document.createElement('div'),
