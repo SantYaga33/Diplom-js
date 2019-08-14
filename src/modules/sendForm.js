@@ -19,10 +19,6 @@ const sendForm = () => {
       elem.addEventListener('input', () => {
         elem.value = elem.value.replace(/[^0-9+]/ig, '');
       });
-      // const regex = /(\d?)(\d{3})(\d{3})(\d{2})(\d{2}$)/g;
-      // const regex = /^((\+?7|8)[ \-] ?)?((\(\d{3}\))|(\d{3}))?([ \-])?(\d{3}[\- ]?\d{2}[\- ]?\d{2})$/g;
-      // const subst = "+$1 ($2) $3-$4-$5";
-      // elem.value = elem.value.replace(regex, subst);
     }
   });
 
@@ -69,6 +65,7 @@ const sendForm = () => {
           thanksContentH4Elem.textContent = 'Спасибо!';
           thanksContentTextElem.textContent = `Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.`;
         }, 3000);
+        throw new Error('Необходимо Ваше согласие на обработку персональных данных');
       }
       } else {
         console.log('У этой формы нет чекбокса');
