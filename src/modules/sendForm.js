@@ -46,8 +46,7 @@ const sendForm = () => {
       const currentFormCheckbox = currentForm.querySelector('input[type=checkbox]'),
             currentFormRadio = currentForm.querySelectorAll('input[type=radio]'),
             currentPopupElem = currentForm.closest('.popup');
-            
-            console.log(currentFormRadio.length);
+    
       e.preventDefault();
       let formData = new FormData(currentForm);
       let body = {};

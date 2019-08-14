@@ -35,4 +35,4 @@ gallerySlider();
 getSailAnchor();
 // getMozaikaCosts();
 // getSchelkovoCosts();
-calc();
+// calc();
