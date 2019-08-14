@@ -1,4 +1,10 @@
 
+import getMozaikaCosts from './modules/getMozaikaCosts';
+import getSchelkovoCosts from './modules/getSchelkovoCosts';
+
+getMozaikaCosts();
+getSchelkovoCosts();
+
 const calc = () => {
   const totalpriceElem = document.getElementById('price-total'),
         cardOrderElem = document.getElementById('card_order'),
@@ -9,7 +15,8 @@ const calc = () => {
 
   
  
-  console.log(radioElem);
+  console.log(getMozaikaCosts);
+  console.log(getSchelkovoCosts);
   
 
   
