@@ -1,37 +1,37 @@
 const servicesSlider = () => { 
   // return function (selector) {
-    const
-      _mainElement = document.querySelector('.services-slider'), // основный элемент блока
-      _sliderWrapper = _mainElement.querySelector('.services-slider__wrapper'), // обертка для .slider-item
-      _sliderItems = _mainElement.querySelectorAll('.slide'), // элементы (.slider-item)
-      _sliderControls = _mainElement.querySelectorAll('.services-slider .slider-arrow'), // элементы управления
+  //   const
+  //     _mainElement = document.querySelector('.services-slider'), // основный элемент блока
+  //     _sliderWrapper = _mainElement.querySelector('.services-slider__wrapper'), // обертка для .slider-item
+  //     _sliderItems = _mainElement.querySelectorAll('.slide'), // элементы (.slider-item)
+  //     _sliderControls = _mainElement.querySelectorAll('.services-slider .slider-arrow'), // элементы управления
      
      
       
-  //создаем  стрелки для слайдера 
-  const leftArrowElem = document.createElement('div'),
-    leftArrowSpanElem = document.createElement('span'),
-    _sliderControlLeft = document.createElement('img');
+  // //создаем  стрелки для слайдера 
+  // const leftArrowElem = document.createElement('div'),
+  //   leftArrowSpanElem = document.createElement('span'),
+  //   _sliderControlLeft = document.createElement('img');
 
-  leftArrowElem.classList.add('slider-arrow', 'prev');
-  leftArrowSpanElem.classList.add('span-prev');
-  _sliderControlLeft.src = 'images/arrow-left.png';
+  // leftArrowElem.classList.add('slider-arrow', 'prev');
+  // leftArrowSpanElem.classList.add('span-prev');
+  // _sliderControlLeft.src = 'images/arrow-left.png';
 
-  leftArrowSpanElem.appendChild(_sliderControlLeft);
-  leftArrowElem.appendChild(leftArrowSpanElem);
-  _mainElement.appendChild(leftArrowElem);
+  // leftArrowSpanElem.appendChild(_sliderControlLeft);
+  // leftArrowElem.appendChild(leftArrowSpanElem);
+  // _mainElement.appendChild(leftArrowElem);
 
-  const rightArrowElem = document.createElement('div'),
-    rightArrowSpanElem = document.createElement('span'),
-    _sliderControlRight = document.createElement('img');
+  // const rightArrowElem = document.createElement('div'),
+  //   rightArrowSpanElem = document.createElement('span'),
+  //   _sliderControlRight = document.createElement('img');
 
-  rightArrowElem.classList.add('slider-arrow', 'next');
-  rightArrowSpanElem.classList.add('span-next');
-  _sliderControlRight.src = 'images/arrow-right.png';
+  // rightArrowElem.classList.add('slider-arrow', 'next');
+  // rightArrowSpanElem.classList.add('span-next');
+  // _sliderControlRight.src = 'images/arrow-right.png';
 
-  rightArrowSpanElem.appendChild(_sliderControlRight);
-  rightArrowElem.appendChild(rightArrowSpanElem);
-  _mainElement.appendChild(rightArrowElem);
+  // rightArrowSpanElem.appendChild(_sliderControlRight);
+  // rightArrowElem.appendChild(rightArrowSpanElem);
+  // _mainElement.appendChild(rightArrowElem);
 
 //слайдер
 
@@ -54,7 +54,7 @@ const servicesSlider = () => {
  
 
 
-
+};
  export default servicesSlider;
 
 

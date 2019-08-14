@@ -19,6 +19,7 @@ import mainSlider  from './modules/mainSlider';
 import servicesSlider  from './modules/servicesSlider';
 import gallerySlider  from './modules/gallerySlider';
 import getSailAnchor  from './modules/getSailAnchor';
+import calc  from './modules/calc';
 
 
 // вызов функций модулей 
@@ -27,6 +28,7 @@ actionPopup();
 getGift();
 sendForm();
 mainSlider();
-// servicesSlider('.services-slider');
+// servicesSlider();
 gallerySlider();
 getSailAnchor();
+calc();
