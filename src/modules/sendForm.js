@@ -17,7 +17,8 @@ const sendForm = () => {
   allInput.forEach((elem) => {
     if (elem.name === 'phone') {
       elem.addEventListener('input', () => {
-      const regex = /(\d?)(\d{3})(\d{3})(\d{2})(\d{2})/g;
+      const regex = /(\d?)(\d{3})(\d{3})(\d{2})(\d{2}$)/g;
+      // const regex = /^((\+?7|8)[ \-] ?)?((\(\d{3}\))|(\d{3}))?([ \-])?(\d{3}[\- ]?\d{2}[\- ]?\d{2})$/g;
       const subst = "+$1 ($2) $3-$4-$5";
       elem.value = elem.value.replace(regex, subst);
       });
