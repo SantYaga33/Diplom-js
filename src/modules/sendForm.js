@@ -44,7 +44,9 @@ const sendForm = () => {
   const checkCurrentForm = (currentForm) => {
     currentForm.addEventListener('submit', (e) => {
       const currentFormCheckbox = currentForm.querySelector('input[type=checkbox]'),
+            currentFormRadio = currentForm.querySelectorAll('input[type=radio]'),
             currentPopupElem = currentForm.closest('.popup');
+            
       e.preventDefault();
       let formData = new FormData(currentForm);
       let body = {};
@@ -52,6 +54,26 @@ const sendForm = () => {
         body[key] = val;
       });
       
+      //проверка на наличие чекбокса-radio в форме и его выбора
+      if (currentFormRadio !== null) {
+        if (!currentFormRadio[0].checked && !currentFormRadio[1].checked) {
+          thanksContentH4Elem.textContent = 'Ошибка';
+          thanksContentTextElem.textContent = `Вы не выбрали предпочитаемый клуб`;
+          thanksFormElem.style.display = 'block';
+          setTimeout(() => {
+            thanksFormElem.style.display = 'none';
+            if (currentPopupElem) {
+              currentPopupElem.style.display = 'block';
+            }
+            thanksContentH4Elem.textContent = 'Спасибо!';
+            thanksContentTextElem.textContent = `Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.`;
+          }, 3000);
+          throw new Error('Не выбран предпочитаемый клуб');
+        }
+      } else {
+        console.log('У этой формы нет radio');
+      }
+      //проверка на наличие чекбокса в форме и его выбора
       if (currentFormCheckbox !== null) {
       if (!currentFormCheckbox.checked) {
         thanksContentH4Elem.textContent = 'Ошибка';
