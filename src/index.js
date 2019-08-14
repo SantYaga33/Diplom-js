@@ -18,6 +18,7 @@ import sendForm  from './modules/sendForm';
 import mainSlider  from './modules/mainSlider';
 import servicesSlider  from './modules/servicesSlider';
 import gallerySlider  from './modules/gallerySlider';
+import getSailAnchor  from './modules/getSailAnchor';
 
 
 // вызов функций модулей 
@@ -28,3 +29,4 @@ sendForm();
 mainSlider();
 // servicesSlider('.services-slider');
 gallerySlider();
+getSailAnchor();

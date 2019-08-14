@@ -58,10 +58,12 @@ const sendForm = () => {
         thanksFormElem.style.display = 'block';
         setTimeout(() => {
           thanksFormElem.style.display = 'none';
+          if (currentPopupElem) {
+            currentPopupElem.style.display = 'block';
+          }
           thanksContentH4Elem.textContent = 'Спасибо!';
           thanksContentTextElem.textContent = `Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.`;
         }, 3000);
-         currentPopupElem.style.display = 'block';
       }
       const allInput = currentForm.querySelectorAll('input');
       allInput.forEach((elem) => {
@@ -77,7 +79,9 @@ const sendForm = () => {
           if (response.status !== 200) {
             throw new Error('Status network not 200');
           }
+          if (currentPopupElem) {
           currentPopupElem.style.display = 'none';
+          }
           thanksFormElem.style.display = 'block';
           setTimeout(() => {
             thanksFormElem.style.display = 'none';
