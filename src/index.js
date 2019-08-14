@@ -31,4 +31,4 @@ mainSlider();
 // servicesSlider();
 gallerySlider();
 getSailAnchor();
-calc();
+// calc();

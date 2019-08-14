@@ -7,7 +7,7 @@ const calc = () => {
   const mozaikaCostElem = mozaikaFormElem.querySelectorAll('.cost');
   const mozaikaCosts = {};
   mozaikaCostElem.forEach((elem) => {
-    elem.value 
+   
   });
 
 
