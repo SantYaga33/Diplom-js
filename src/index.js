@@ -19,6 +19,8 @@ import mainSlider  from './modules/mainSlider';
 import servicesSlider  from './modules/servicesSlider';
 import gallerySlider  from './modules/gallerySlider';
 import getSailAnchor  from './modules/getSailAnchor';
+import getMozaikaCosts  from './modules/getMozaikaCosts';
+import getSchelkovoCosts  from './modules/getSchelkovoCosts';
 import calc  from './modules/calc';
 
 
@@ -31,4 +33,6 @@ mainSlider();
 // servicesSlider();
 gallerySlider();
 getSailAnchor();
-// calc();
+// getMozaikaCosts();
+// getSchelkovoCosts();
+calc();

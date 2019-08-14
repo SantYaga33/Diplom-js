@@ -47,6 +47,7 @@ const sendForm = () => {
             currentFormRadio = currentForm.querySelectorAll('input[type=radio]'),
             currentPopupElem = currentForm.closest('.popup');
             
+            console.log(currentFormRadio.length);
       e.preventDefault();
       let formData = new FormData(currentForm);
       let body = {};
@@ -55,7 +56,7 @@ const sendForm = () => {
       });
       
       //проверка на наличие чекбокса-radio в форме и его выбора
-      if (currentFormRadio !== null) {
+      if (currentFormRadio.length > 0) {
         if (!currentFormRadio[0].checked && !currentFormRadio[1].checked) {
           thanksContentH4Elem.textContent = 'Ошибка';
           thanksContentTextElem.textContent = `Вы не выбрали предпочитаемый клуб`;

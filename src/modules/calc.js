@@ -1,24 +1,20 @@
+
 const calc = () => {
-  const mozaikaFormElem = document.querySelector('#mozaika #card_order');
-  const schelkovoFormElem = document.querySelector('#schelkovo #card_order');
+  const totalpriceElem = document.getElementById('price-total'),
+        cardOrderElem = document.getElementById('card_order'),
+        cardMozaikaElem = document.getElementById('card_leto_mozaika'),
+        cardSchelkovoElem = document.getElementById('card_leto_schelkovo'),
+        promoElem = document.querySelector('price-message__promo'),
+        radioElem = cardOrderElem.querySelectorAll('input[name="card-type"]');
 
+  
+ 
+  console.log(radioElem);
+  
 
+  
 
-  const mozaikaCostElem = mozaikaFormElem.querySelectorAll('.cost');
-  const mozaikaCosts = {};
-  mozaikaCostElem.forEach((elem) => {
-   
-  });
-
-
-
-
-
-
-
-  console.log('mozaikaCostElem: ', mozaikaCostElem);
-
-  console.log('mozaikaFormElem: ', mozaikaFormElem);
+  
 
 
 
