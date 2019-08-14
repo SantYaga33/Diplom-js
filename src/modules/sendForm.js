@@ -17,7 +17,9 @@ const sendForm = () => {
   allInput.forEach((elem) => {
     if (elem.name === 'phone') {
       elem.addEventListener('input', () => {
-        elem.value = elem.value.replace(/[^0-9+]/ig, '');
+      // elem.value = elem.value.replace(/?^((\+?7|8)[ \-] ?)?((\(\d{3}\))|(\d{3}))?([ \-])?(\d{3}[\- ]?\d{2}[\- ]?\d{2})$/g, '');
+      // elem.value = elem.value.replace(/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/, '');
+      elem.value = elem.value.replace(/[^0-9+]/ig, '');
       });
     }
   });
@@ -52,6 +54,7 @@ const sendForm = () => {
         body[key] = val;
       });
       
+      if (currentFormCheckbox !== null) {
       if (!currentFormCheckbox.checked) {
         thanksContentH4Elem.textContent = 'Ошибка';
         thanksContentTextElem.textContent = `Необходимо Ваше согласие на обработку персональных данных`;
@@ -65,6 +68,10 @@ const sendForm = () => {
           thanksContentTextElem.textContent = `Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.`;
         }, 3000);
       }
+      } else {
+        console.log('У этой формы нет чекбокса');
+      }
+
       const allInput = currentForm.querySelectorAll('input');
       allInput.forEach((elem) => {
         elem.value = '';

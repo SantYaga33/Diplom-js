@@ -14,7 +14,7 @@ const getSailAnchor = () => {
       });
     });
   });
-
+  // плавная прокрутка до верха страницы
   const smootUp = document.getElementById('totop');
   smootUp.addEventListener('click', () => {
     const smoothJumpUp = () => {
