@@ -71,7 +71,7 @@ const sendForm = () => {
           throw new Error('Не выбран предпочитаемый клуб');
         }
       } else {
-        console.log('У этой формы нет radio');
+        console.log('');
       }
       //проверка на наличие чекбокса в форме и его выбора
       if (currentFormCheckbox !== null) {
@@ -90,7 +90,7 @@ const sendForm = () => {
         throw new Error('Необходимо Ваше согласие на обработку персональных данных');
       }
       } else {
-        console.log('У этой формы нет чекбокса-согласия для передачи перс-х данных');
+        console.log('');
       }
 
       const allInput = currentForm.querySelectorAll('input');
