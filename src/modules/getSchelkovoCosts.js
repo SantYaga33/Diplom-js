@@ -1,20 +1,33 @@
+const schelkovoCosts = {};
 const getSchelkovoCosts = () => {
   const schelkovoFormElem = document.querySelector('#schelkovo #card_order'),
         schelkovoHtmlElem = document.querySelector('#schelkovo');
   
-  const schelkovoCosts = [];
+  const schelkovoTime = [], schelkovoPrice = [];
   if (schelkovoHtmlElem !== null) {
-  const schelkovoCostElem = schelkovoFormElem.querySelectorAll('.cost');
+  const schelkovoCostElem = schelkovoFormElem.querySelectorAll('.cost'),
+        schelkovoTimeElem = schelkovoFormElem.querySelectorAll('input[name=card-type]');
   schelkovoCostElem.forEach((elem) => {
     let textElem = elem.textContent.replace(/[^\d]/, '');
-    schelkovoCosts.push(textElem);
-    console.log(textElem);
+    schelkovoPrice.push(textElem);
   });
-  } else {
-    return false;
+
+  schelkovoTimeElem.forEach((item) => {
+    schelkovoTime.push( item.value);
+  });
+  
+  for (let i = 0; i < schelkovoTime.length; i++) {
+    schelkovoCosts[schelkovoTime[i]] = schelkovoPrice[i];
   }
-  return schelkovoCosts;
+  
+} else {
+  return false;
+}
+console.log(schelkovoCosts);
+  
 };
 
+getSchelkovoCosts();
 
-export default getSchelkovoCosts;
+export default schelkovoCosts;
+
