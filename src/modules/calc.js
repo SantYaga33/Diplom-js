@@ -58,7 +58,7 @@ const calc = () => {
     });
   });
 
-  
+  if (radioOderElem !== null) {
   radioOderElem.addEventListener('change', (event) => {
     if (promoElem.value) {
       discountValue = 1000;
@@ -71,7 +71,7 @@ const calc = () => {
       priceTotalElem.textContent = `${summ}`;
     }
   });
-
+ }
 };
 
  export default calc;
