@@ -65,8 +65,6 @@ const calc = () => {
     } else {
       discountValue = 0;
     }
-    console.log('  promoElem.value: ', promoElem.value);
-    console.log(' discount: ', discountValue);
     let target = event.target;
     if (target.matches('input[name=card-type]')) {
       let summ = parseInt(priceClubCart[target.value], 10) - parseInt(discountValue, 10);
