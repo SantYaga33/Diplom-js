@@ -30,7 +30,7 @@ actionPopup();
 getGift();
 sendForm();
 mainSlider();
-// servicesSlider();
+servicesSlider();
 gallerySlider();
 getSailAnchor();
 getMozaikaCosts();

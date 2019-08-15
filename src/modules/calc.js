@@ -1,9 +1,7 @@
 
-import getMozaikaCosts from './modules/getMozaikaCosts';
-import getSchelkovoCosts from './modules/getSchelkovoCosts';
+import getMozaikaCosts from './getMozaikaCosts';
+import getSchelkovoCosts from './getSchelkovoCosts';
 
-getMozaikaCosts();
-getSchelkovoCosts();
 
 const calc = () => {
   const totalpriceElem = document.getElementById('price-total'),
@@ -15,8 +13,8 @@ const calc = () => {
 
   
  
-  console.log(getMozaikaCosts);
-  console.log(getSchelkovoCosts);
+  // console.log(getMozaikaCosts);
+  // console.log(getSchelkovoCosts);
   
 
   

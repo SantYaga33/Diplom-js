@@ -1,15 +1,19 @@
 const getMozaikaCosts = () => {
   const mozaikaFormElem = document.querySelector('#mozaika #card_order'),
-        mozaikaCostElem = mozaikaFormElem.querySelectorAll('.cost');
-
-   const mozaikaCosts = [];
+        mozaikaHtmlElem = document.querySelector('#mozaika');
+  
+  const mozaikaCosts = [];
+  if (mozaikaHtmlElem !== null) {
+  const  mozaikaCostElem = mozaikaFormElem.querySelectorAll('.cost');
    mozaikaCostElem.forEach((elem) => {
      let textElem = elem.textContent.replace(/[^\d]/, '');
      mozaikaCosts.push(textElem);
      console.log(textElem);
-   });
-   return mozaikaCosts;
-  };
+    });
+  } else {
+    return false;
+  }
+  return mozaikaCosts;
 
-
+};
 export default getMozaikaCosts;

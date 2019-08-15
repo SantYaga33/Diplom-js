@@ -1,60 +1,75 @@
-const servicesSlider = () => { 
-  // return function (selector) {
-  //   const
-  //     _mainElement = document.querySelector('.services-slider'), // основный элемент блока
-  //     _sliderWrapper = _mainElement.querySelector('.services-slider__wrapper'), // обертка для .slider-item
-  //     _sliderItems = _mainElement.querySelectorAll('.slide'), // элементы (.slider-item)
-  //     _sliderControls = _mainElement.querySelectorAll('.services-slider .slider-arrow'), // элементы управления
-     
-     
-      
-  // //создаем  стрелки для слайдера 
-  // const leftArrowElem = document.createElement('div'),
-  //   leftArrowSpanElem = document.createElement('span'),
-  //   _sliderControlLeft = document.createElement('img');
+// import animateCSS from "./animateCss";
 
-  // leftArrowElem.classList.add('slider-arrow', 'prev');
-  // leftArrowSpanElem.classList.add('span-prev');
-  // _sliderControlLeft.src = 'images/arrow-left.png';
+const servicesSlider = (minWidth = 223) => {
+  const slide = document.querySelectorAll('.services-slider .slide'),
+    slider = document.querySelector('.services-slider'),
+    sliderWrapper = document.querySelector('#services .wrapper'),
+    maxWidth = minWidth * (slide.length - 5);
+  let prevArr,
+    nextArr,
+    currentWidth = 0,
+    h2 = document.querySelector('#services .wrapper h2'),
+    html = `
+                <div class="slider-arrow next"><span><i class="fa fa-angle-right"></i></span></div>
+                <div class="slider-arrow prev"><span><i class="fa fa-angle-left"></i></span></div>
+            `;
+  slide.forEach((elem, index) => {
+    if (index === 0) {
+      elem.style.cssText = `
+                -webkit-transition: .2s linear;
+                -moz-transition: .2s linear;
+                -o-transition: .2s linear;
+                transition: .2s linear;
+                min-width: 210px;
+            `;
+    } else {
+      elem.style.cssText = `min-width: 210px;`;
+    }
 
-  // leftArrowSpanElem.appendChild(_sliderControlLeft);
-  // leftArrowElem.appendChild(leftArrowSpanElem);
-  // _mainElement.appendChild(leftArrowElem);
+  });
+  //корректируем обертку
+  sliderWrapper.style.cssText = `max-width: 1150px`;
+  //освобождаем  wrapper
+  document.getElementById('services').insertAdjacentHTML('afterbegin', h2.outerHTML);
+  h2.remove();
+  //добавляем стрелки стили и анимацию
+  slider.style.cssText = `
+        position: relative;
+        overflow-x: hidden;
+    `;
+  slider.insertAdjacentHTML('beforeEnd', html);
+  nextArr = slider.querySelector('.slider-arrow.next');
+  prevArr = slider.querySelector('.slider-arrow.prev');
 
-  // const rightArrowElem = document.createElement('div'),
-  //   rightArrowSpanElem = document.createElement('span'),
-  //   _sliderControlRight = document.createElement('img');
-
-  // rightArrowElem.classList.add('slider-arrow', 'next');
-  // rightArrowSpanElem.classList.add('span-next');
-  // _sliderControlRight.src = 'images/arrow-right.png';
-
-  // rightArrowSpanElem.appendChild(_sliderControlRight);
-  // rightArrowElem.appendChild(rightArrowSpanElem);
-  // _mainElement.appendChild(rightArrowElem);
-
-//слайдер
-
-     
- //останавливаем слайдер при наведении ( на слайд или точки)
-//  sliderElem.addEventListener('mouseover', (event) => {
-//    if (event.target.closest('.gallery-slider .slide') ||
-//      event.target.matches('.slider-dots li button')) {
-//      stopSlide();
-//    }
-//  });
-
-//  sliderElem.addEventListener('mouseout', (event) => {
-//    if (event.target.closest('.gallery-slider .slide') ||
-//      event.target.matches('.slider-dots li button')) {
-//      startSlide();
-//    }
-//  });
-
- 
+  const moveSlide = (changeSlide) => {
+    currentWidth += +changeSlide;
 
 
+    if (currentWidth <= 6) {
+      console.log(currentWidth);
+      currentWidth = 4;
+      slide[0].style.marginLeft = `-${currentWidth}px`;
+      currentWidth = 0;
+    } else if (currentWidth >= maxWidth) {
+      currentWidth = maxWidth;
+      slide[0].style.marginLeft = `-${currentWidth}px`;
+    }
+    slide[0].style.marginLeft = `-${currentWidth}px`;
+
+  };
+
+  slider.addEventListener('click', (event) => {
+    let target = event.target;
+    event.preventDefault();
+    if (target.closest('.next')) {
+      moveSlide(minWidth);
+    }
+    if (target.closest('.prev')) {
+      moveSlide(-minWidth);
+    }
+  });
 };
- export default servicesSlider;
+
+export default servicesSlider;
 
 
