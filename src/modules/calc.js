@@ -20,8 +20,10 @@ const calc = () => {
   
   const priceTotalElem = document.getElementById('price-total'),
         radioCardElem = document.querySelectorAll('#card_order .club'),
-        radioOderElem = document.querySelector('#card_order .time');
+        radioOderElem = document.querySelector('#card_order .time'),
+        promoElem = document.querySelector('.price-message__promo');
 
+  let discountValue;
   let priceClubCart = {
     1: "2999",
     6: "9900",
@@ -53,14 +55,22 @@ const calc = () => {
     } else if (target.value === 'schelkovo') {
       priceClubCart = schelkovoCosts;
     }
-   
     });
   });
 
+  
   radioOderElem.addEventListener('change', (event) => {
+    if (promoElem.value) {
+      discountValue = 1000;
+    } else {
+      discountValue = 0;
+    }
+    console.log('  promoElem.value: ', promoElem.value);
+    console.log(' discount: ', discountValue);
     let target = event.target;
     if (target.matches('input[name=card-type]')) {
-      priceTotalElem.textContent = `${priceClubCart[target.value]}`;
+      let summ = parseInt(priceClubCart[target.value], 10) - parseInt(discountValue, 10);
+      priceTotalElem.textContent = `${summ}`;
     }
   });
 
