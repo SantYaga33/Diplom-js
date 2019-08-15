@@ -1,6 +1,20 @@
 
-import mozaikaCosts from './getMozaikaCosts';
-import schelkovoCosts from './getSchelkovoCosts';
+// import {
+//   mozaikaCosts,
+//   getMozaikaCosts
+// } from './getMozaikaCosts';
+
+// import {
+//   schelkovoCosts,
+//   getSchelkovoCosts
+// }
+// from './getSchelkovoCosts';
+
+// getMozaikaCosts();
+// getSchelkovoCosts();
+
+// console.log('mozaikaCosts: ', mozaikaCosts);
+// console.log('schelkovoCosts: ', schelkovoCosts);
 
 const calc = () => {
   

@@ -55,7 +55,7 @@ const sendForm = () => {
       });
       
       //проверка на наличие чекбокса-radio в форме и его выбора
-      if (currentFormRadio.length > 0) {
+      if (currentFormRadio.length > 0 && currentForm !== cardOrderElem) {
         if (!currentFormRadio[0].checked && !currentFormRadio[1].checked) {
           thanksContentH4Elem.textContent = 'Ошибка';
           thanksContentTextElem.textContent = `Вы не выбрали предпочитаемый клуб`;
@@ -90,7 +90,7 @@ const sendForm = () => {
         throw new Error('Необходимо Ваше согласие на обработку персональных данных');
       }
       } else {
-        console.log('У этой формы нет чекбокса');
+        console.log('У этой формы нет чекбокса-согласия для передачи перс-х данных');
       }
 
       const allInput = currentForm.querySelectorAll('input');

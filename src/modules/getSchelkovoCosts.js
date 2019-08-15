@@ -27,7 +27,12 @@ console.log(schelkovoCosts);
   
 };
 
-getSchelkovoCosts();
+// getSchelkovoCosts();
 
-export default schelkovoCosts;
+// export default schelkovoCosts;
+
+export {
+  schelkovoCosts,
+  getSchelkovoCosts
+};
 

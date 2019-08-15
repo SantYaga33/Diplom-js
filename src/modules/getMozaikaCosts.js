@@ -27,6 +27,7 @@ const getMozaikaCosts = () => {
   console.log(mozaikaCosts);
 };
 
-getMozaikaCosts();
+// getMozaikaCosts();
 
-export default mozaikaCosts;
+// export default mozaikaCosts;
+export { mozaikaCosts, getMozaikaCosts} ;
